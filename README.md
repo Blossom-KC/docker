@@ -9,7 +9,7 @@ A docker compose deployment for running Blossom Platform application with all co
 1. install docker and docker-compose on host and make sure they start on boot.
 2. clone this repository or download its files to /root/blossom-docker.
 3. on the host, create `/var/www` and `/var/www/html` directories.
-4. extract all files from the application zip file to /var/www/html.
+4. extract all files from the application zip file to `/var/www/html`.
 5. copy the content of `cron/www` to `/var/www`.
 6. set owner of `/var/www` to www-data using this command: `sudo chown -R 82:82 /var/www`.
 7. run `docker-compose up -d` to start the containers.
