@@ -1,0 +1,2 @@
+5 0 * * * flock -n /tmp/cron_night  sh /var/www/night.sh
+* * * * * flock -n /tmp/cron_minute sh /var/www/minute.sh
