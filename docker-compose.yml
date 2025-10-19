@@ -1,12 +1,12 @@
 services:
   blossom-phpfpm:
     restart: always
-    image: blossomkc/php:8.1.33
+    image: blossomkc/php:8.3.23-multiarch
     volumes:
       - ./php/php.ini:/usr/local/etc/php/php.ini
       - ./php/www.conf:/usr/local/etc/php-fpm.d/www.conf
       - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
-      - ./php/ixed.8.1.lin:/usr/local/etc/ixed.8.1.lin
+      - ./php/ixed.8.3.lin:/usr/local/lib/php/extensions/no-debug-non-zts-20230831/ixed.8.3.lin
       - /var/www:/var/www
 
   blossom-apache:
@@ -23,10 +23,11 @@ services:
 
   blossom-cron:
     restart: always
-    image: blossomkc/cron:8.1.33
+    image: blossomkc/cron:8.3.23-multiarch
     environment:
       - HOST_HOSTNAME=${HOSTNAME} #linux only (on windows use COMPUTERNAME)
     volumes:
       - ./php/php.ini:/usr/local/etc/php/php.ini
-      - ./php/ixed.8.1.lin:/usr/local/etc/ixed.8.1.lin
+      - ./php/ixed.8.3.lin:/usr/local/lib/php/extensions/no-debug-non-zts-20230831/ixed.8.3.lin
+      #- ./php/ixed.8.3.lin:/usr/local/lib/php/extensions/no-debug-non-zts-20230831/ixed.8.3-arm.lin
       - /var/www:/var/www
