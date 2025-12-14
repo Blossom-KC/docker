@@ -1,7 +1,7 @@
 services:
   blossom-phpfpm:
     restart: always
-    image: blossomkc/php:8.1.33
+    image: blossomkc/php:8.1.33-2
     volumes:
       - ./php/php.ini:/usr/local/etc/php/php.ini
       - ./php/www.conf:/usr/local/etc/php-fpm.d/www.conf
@@ -23,7 +23,7 @@ services:
 
   blossom-cron:
     restart: always
-    image: blossomkc/cron:8.1.33
+    image: blossomkc/cron:8.1.33-2
     environment:
       - HOST_HOSTNAME=${HOSTNAME} #linux only (on windows use COMPUTERNAME)
     volumes:
