@@ -8,6 +8,10 @@ services:
       - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - ./php/ixed.8.1.lin:/usr/local/etc/ixed.8.1.lin
       - /var/www:/var/www
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '50m'
 
   blossom-apache:
     restart: always
@@ -20,6 +24,10 @@ services:
       - ./http/httpd.conf:/usr/local/apache2/conf/httpd.conf
       - ./http/cert:/certs
       - /var/www:/var/www
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '50m'
 
   blossom-cron:
     restart: always
@@ -30,3 +38,7 @@ services:
       - ./php/php.ini:/usr/local/etc/php/php.ini
       - ./php/ixed.8.1.lin:/usr/local/etc/ixed.8.1.lin
       - /var/www:/var/www
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '50m'
