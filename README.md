@@ -1,4 +1,4 @@
-# Blossom Docker Deployment (v8.1)
+# Blossom Docker Deployment (v8.3)
 
 A docker compose deployment for running Blossom Platform application with all configurations are already set.
 
