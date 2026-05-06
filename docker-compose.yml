@@ -15,7 +15,7 @@ services:
 
   blossom-apache:
     restart: always
-    image: httpd:2.4.62-alpine3.20
+    image: httpd:2.4.67-alpine3.23
     ports:
       - "80:80"
       - "443:443"
