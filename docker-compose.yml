@@ -7,6 +7,7 @@ services:
       - ./php/www.conf:/usr/local/etc/php-fpm.d/www.conf
       - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - ./php/ixed.8.3.lin:/usr/local/lib/php/extensions/no-debug-non-zts-20230831/ixed.8.3.lin
+      #- ./php/ixed.8.3-arm.lin:/usr/local/lib/php/extensions/no-debug-non-zts-20230831/ixed.8.3.lin
       - /var/www:/var/www
     logging:
       driver: 'json-file'
@@ -21,6 +22,7 @@ services:
       - "443:443"
     volumes:
       - ./http/vhost.conf:/usr/local/apache2/conf/site-available/vhost.conf
+      #- ./http/vhost-ssl.conf:/usr/local/apache2/conf/site-available/vhost-ssl.conf
       - ./http/httpd.conf:/usr/local/apache2/conf/httpd.conf
       - ./http/cert:/certs
       - /var/www:/var/www
@@ -37,7 +39,7 @@ services:
     volumes:
       - ./php/php.ini:/usr/local/etc/php/php.ini
       - ./php/ixed.8.3.lin:/usr/local/lib/php/extensions/no-debug-non-zts-20230831/ixed.8.3.lin
-      #- ./php/ixed.8.3.lin:/usr/local/lib/php/extensions/no-debug-non-zts-20230831/ixed.8.3-arm.lin
+      #- ./php/ixed.8.3-arm.lin:/usr/local/lib/php/extensions/no-debug-non-zts-20230831/ixed.8.3.lin
       - /var/www:/var/www
     logging:
       driver: 'json-file'
