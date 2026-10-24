@@ -1,2 +1,4 @@
 .env
 http/cert/
+apache-md/*
+!apache-md/.gitkeep

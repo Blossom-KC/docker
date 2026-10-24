@@ -16,14 +16,21 @@ services:
   blossom-apache:
     restart: always
     image: httpd:2.4.67-alpine3.23
+    environment:
+      APACHE_VHOST: ${APACHE_VHOST:-vhost.conf}
+      LE_DOMAIN: ${LE_DOMAIN:-}
+      LE_EMAIL: ${LE_EMAIL:-}
+      LE_CA: ${LE_CA:-https://acme-v02.api.letsencrypt.org/directory}
+    command: ["/bin/sh", "/usr/local/bin/apache-mod-md.sh"]
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./http/vhost.conf:/usr/local/apache2/conf/site-available/vhost.conf
-      #- ./http/vhost-ssl.conf:/usr/local/apache2/conf/site-available/vhost-ssl.conf
+      - ./http/${APACHE_VHOST:-vhost.conf}:/usr/local/apache2/conf/site-available/vhost.conf:ro
       - ./http/httpd.conf:/usr/local/apache2/conf/httpd.conf
       - ./http/cert:/certs
+      - ./scripts/apache-mod-md.sh:/usr/local/bin/apache-mod-md.sh:ro
+      - ./apache-md:/usr/local/apache2/md
       - /var/www:/var/www
     logging:
       driver: 'json-file'
