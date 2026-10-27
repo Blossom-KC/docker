@@ -14,6 +14,18 @@ A docker compose deployment for running Blossom Platform application with all co
 6. set owner of `/var/www` to www-data using this command: `sudo chown -R 82:82 /var/www`.
 7. run `docker-compose up -d` to start the containers.
 
+### Disable cron
+
+To run the cluster without `blossom-cron`, set this in `.env`:
+
+```dotenv
+BLOSSOM_CRON_ENABLED=0
+```
+
+Apply the change with `docker compose up -d`. This also removes an existing
+cron container. Set `BLOSSOM_CRON_ENABLED=1` to enable it again. Cron is enabled
+by default when the variable is unset or empty. Use only `0` or `1`.
+
 ### ARM machines
 
 Before starting the containers on ARM, copy `.env.example` to `.env` (or edit

@@ -31,6 +31,7 @@ services:
         max-size: '50m'
 
   blossom-cron:
+    scale: ${BLOSSOM_CRON_ENABLED:-1}
     restart: always
     image: blossomkc/cron:8.3.36-multiarch
     environment:
