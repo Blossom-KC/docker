@@ -1,7 +1,7 @@
 services:
   blossom-phpfpm:
     restart: always
-    image: blossomkc/php:8.3.36-multiarch
+    image: blossomkc/php:8.3.36-2-multiarch
     volumes:
       - ./php/php.ini:/usr/local/etc/php/php.ini
       - ./php/www.conf:/usr/local/etc/php-fpm.d/www.conf
@@ -33,7 +33,7 @@ services:
   blossom-cron:
     scale: ${BLOSSOM_CRON_ENABLED:-1}
     restart: always
-    image: blossomkc/cron:8.3.36-multiarch
+    image: blossomkc/cron:8.3.36-2-multiarch
     environment:
       - HOST_HOSTNAME=${HOSTNAME} #linux only (on windows use COMPUTERNAME)
     volumes:
